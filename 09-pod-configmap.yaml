@@ -9,3 +9,6 @@ spec:
 envfrom :
     - ConfigMapref: 
        name: myconfig
+ 
+
+ 
