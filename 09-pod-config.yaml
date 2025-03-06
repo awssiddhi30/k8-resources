@@ -6,6 +6,6 @@ spec:
   containers:
   - name: nginx 
     image: nginx
-    envfrom :
+envfrom :
     - ConfigMapref: 
        name: myconfig
