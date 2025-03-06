@@ -19,3 +19,20 @@ spec:
       containers:
       - name: nginx
         image: nginx
+
+---        
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: LoadBalancer
+  selector:
+   tier: web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 32000
+
