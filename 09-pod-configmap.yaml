@@ -1,14 +1,12 @@
-kind: Pod
 apiVersion: v1
-metadata: 
-   name: pod-cong
-spec: 
+kind: Pod
+metadata:
+  name: nginx
+  # one pod can contain multiple containers
+spec:
   containers:
-  - name: nginx 
+  - name: nginx
     image: nginx
-envFrom:
-    - ConfigMapref: 
-       name: myconfig
- 
-
- 
+    envFrom:
+      - configMapRef:
+          name: myconfig
