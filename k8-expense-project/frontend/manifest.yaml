@@ -20,7 +20,7 @@ spec:
       containers:
       - name: frontend
         image: arun596/frontend:1.0.0
-
+        containerport: 8080 
 ---
 apiVersion: v1
 kind: Service
