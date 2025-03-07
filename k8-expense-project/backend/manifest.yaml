@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+        project: expense
+        environment: dev
+    spec:
+      containers:
+      - name: backend
+        image: arun596/backend:2.0.0
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: backend
+    project: expense
+    environment: dev
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      
+        

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+        project: expense
+        environment: dev
+    spec:
+      containers:
+      - name: mysql
+        image: arun596/mysql:1.0.0
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  type: ClusterIP
+  selector:
+    app: mysql
+    project: expense
+    environment: dev
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+      
+        
