@@ -13,26 +13,26 @@ spec:
 
 ---
 
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: nginx
-#   labels:
-#     purpose: "ebs-static-demo"
-#     app: nginx
-# spec:
-#   nodeSelector:
-#     topology.kubernetes.io/zone: us-east-1a
-#   containers:
-#   - name: app
-#     image: nginx
-#     volumeMounts:
-#     - name: persistent-storage
-#       mountPath: /usr/share/nginx/html
-#   volumes:
-#   - name: persistent-storage
-#     persistentVolumeClaim:
-#       claimName: ebs-static-volume
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    purpose: "ebs-static-demo"
+    app: nginx
+spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1a
+  containers:
+  - name: app
+    image: nginx
+    volumeMounts:
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: ebs-static
 
 # ---
 # kind: Service
