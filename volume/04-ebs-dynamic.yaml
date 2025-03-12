@@ -4,7 +4,7 @@ metadata:
   name: ebs-dynamic-volume
 spec:
   storageClassName: ebs-sc # Empty string must be explicitly set otherwise default StorageClass will be set
-  volumeName: pvc-e12d39b3-4b79-4409-a51d-088073d7a214
+  volumeName: e12d39b3-4b79-4409-a51d-088073d7a214
   accessModes:
     - ReadWriteOnce
   resources:
