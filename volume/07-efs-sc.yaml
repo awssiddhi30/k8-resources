@@ -8,4 +8,4 @@ parameters:
   fileSystemId: fs-08333ef17a300cc3d
   directoryPerms: "700"
   basePath: "/expense"
-reclaimPolicy: Retain
+reclaimPolicy: Delete
