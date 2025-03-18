@@ -8,9 +8,27 @@ spec:
   containers:
   - name: nginx
     image: nginx
+  ports:
+  - protocol: TCP
+    port: 80        # service port
+    targetPort: 80 
   
   initContainers:
   - name: init-myservice
     image: busybox:1.28
     command: ['sh', '-c', "until nslookup google.com; do echo waiting for myservice; sleep 2; done"]
   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-np
+spec:
+  type: LoadBalancer
+  selector: # labels are used as selectors
+    app.kubernetes.io/name: MyApp
+  ports:
+  - protocol: TCP
+    port: 80        # service port
+    targetPort: 80   # target port in the pod
+    nodePort: 32000  # custom NodePort
